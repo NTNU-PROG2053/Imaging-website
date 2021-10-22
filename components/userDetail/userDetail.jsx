@@ -1,6 +1,9 @@
 import React from 'react';
 import {
-  Typography
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
 } from '@material-ui/core';
 import './userDetail.css';
 
@@ -11,6 +14,7 @@ import './userDetail.css';
 class UserDetail extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   render() {
@@ -28,13 +32,7 @@ class UserDetail extends React.Component {
             </ListItem>
 
           </List>
-          <ul>
-            <li>{this.props.match.params.first_name} </li>
-            <li>Last name: {this.props.match.params.last_name}</li>
-            <li>Location: {this.props.match.params.location}</li>
-            <li>Description: {this.props.match.params.description}</li>
-            <li>Occupation: {this.props.match.param.occupation}</li>
-          </ul>
+    
         </div>
       
     );
