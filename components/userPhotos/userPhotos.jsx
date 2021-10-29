@@ -1,6 +1,8 @@
 import React from 'react';
 import {
-  Card,
+  List,
+  ListItem,
+  ListItemText,
   Typography
 } from '@material-ui/core';
 import './userPhotos.css';
@@ -20,10 +22,28 @@ class UserPhotos extends React.Component {
     return (
       <div>
         {window.cs142models.photoOfUserModel(this.props.match.params.userId).map((photo) =>
-          <div className="imageDiv">
+          <div key={photo.userId} className="imageDiv">
             <img src={`../images/${photo.file_name}`} style={{
               width: '50%',
             }} />
+            <List className="flexContainer">
+              <ListItem>
+                <ListItemText primary={"Date: " + photo.date_time} />
+              </ListItem>
+            </List>
+          
+            <List>
+              {photo.comments.map((comment) =>
+                <div key={comments._id} className="commentDiv">
+                  <ListItem>
+                    <ListItemText primary={comment.comments} />
+                  </ListItem>
+                </div>
+
+              )};
+            </List>
+            
+
           </div>
         )}
       </div>
