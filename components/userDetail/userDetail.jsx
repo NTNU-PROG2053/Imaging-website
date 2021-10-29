@@ -18,16 +18,8 @@ class UserDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      userModel: window.cs142models.userModel(this.props.match.params.userId)
-
-    };
-
   }
 
-  updateUserModel() {
-    this.setState({ userModel: window.cs142models.userModel(this.props.match.params.userId) })
-  }
 
   render() {
     return (

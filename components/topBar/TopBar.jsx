@@ -10,6 +10,7 @@ import './TopBar.css';
 class TopBar extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   render() {
