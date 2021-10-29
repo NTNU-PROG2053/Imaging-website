@@ -4,10 +4,12 @@ import {
   List,
   ListItem,
   ListItemText,
-  HashRouter,
+  ListItemAvatar,
+  Avatar,
+  ImageIcon
 } from '@material-ui/core';
 import './userDetail.css';
-
+import { Link } from 'react-router-dom'
 
 /**
  * Define UserDetail, a React componment of CS142 project #5
@@ -18,21 +20,20 @@ class UserDetail extends React.Component {
 
     this.state = {
       userModel: window.cs142models.userModel(this.props.match.params.userId)
-      
+
     };
 
   }
 
   updateUserModel() {
-    this.setState({userModel: window.cs142models.userModel(this.props.match.params.userId)})
+    this.setState({ userModel: window.cs142models.userModel(this.props.match.params.userId) })
   }
 
   render() {
     return (
-      
-        <div id="User_details">
-          
-          <div>
+
+      <div id="User_details">
+        <div>
           <List>
             <ListItem>
               <ListItemText primary="First Name" secondary={window.cs142models.userModel(this.props.match.params.userId).first_name}></ListItemText>
@@ -48,12 +49,15 @@ class UserDetail extends React.Component {
             </ListItem>
             <ListItem>
               <ListItemText primary="Occupation" secondary={window.cs142models.userModel(this.props.match.params.userId).occupation}></ListItemText>
-            </ListItem> 
+            </ListItem>
+            <ListItem button component={Link} to={`/photos/${this.props.match.params.userId}`}>
+              <ListItemText primary="lololol" />
+            </ListItem>
           </List>
-          </div>
-          
         </div>
-      
+
+      </div>
+
     );
   }
 }
