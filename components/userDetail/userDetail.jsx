@@ -51,7 +51,7 @@ class UserDetail extends React.Component {
               <ListItemText primary="Occupation" secondary={window.cs142models.userModel(this.props.match.params.userId).occupation}></ListItemText>
             </ListItem>
             <ListItem button component={Link} to={`/photos/${this.props.match.params.userId}`}>
-              <ListItemText primary="lololol" />
+              <ListItemText primary="User Photos" />
             </ListItem>
           </List>
         </div>
