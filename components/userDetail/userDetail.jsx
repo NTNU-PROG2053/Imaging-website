@@ -23,6 +23,10 @@ class UserDetail extends React.Component {
 
   }
 
+  updateUserModel() {
+    this.setState({userModel: window.cs142models.userModel(this.props.match.params.userId)})
+  }
+
   render() {
     return (
       
@@ -31,19 +35,19 @@ class UserDetail extends React.Component {
           <div>
           <List>
             <ListItem>
-              <ListItemText primary="First Name" secondary={this.state.userModel.first_name}></ListItemText>
+              <ListItemText primary="First Name" secondary={window.cs142models.userModel(this.props.match.params.userId).first_name}></ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText primary="Last Name" secondary={this.state.userModel.last_name}></ListItemText>
+              <ListItemText primary="Last Name" secondary={window.cs142models.userModel(this.props.match.params.userId).last_name}></ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText primary="Location" secondary={this.state.userModel.location}></ListItemText>
+              <ListItemText primary="Location" secondary={window.cs142models.userModel(this.props.match.params.userId).location}></ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText primary="Description" secondary={this.state.userModel.description}></ListItemText>
+              <ListItemText primary="Description" secondary={window.cs142models.userModel(this.props.match.params.userId).description}></ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText primary="Occupation" secondary={this.state.userModel.occupation}></ListItemText>
+              <ListItemText primary="Occupation" secondary={window.cs142models.userModel(this.props.match.params.userId).occupation}></ListItemText>
             </ListItem> 
           </List>
           </div>
