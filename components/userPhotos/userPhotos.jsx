@@ -4,7 +4,6 @@ import {
   Typography
 } from '@material-ui/core';
 import './userPhotos.css';
-import Image from "material-ui-image";
 
 
 /**
@@ -21,12 +20,11 @@ class UserPhotos extends React.Component {
     return (
       <div>
         {window.cs142models.photoOfUserModel(this.props.match.params.userId).map((photo) =>
-          <Card variant="outlined" key={photo._id} style={{
-              height: '50%',
-              width: '50%'
-          }}>
-            <Image src={`../images/${photo.file_name}`} />
-          </Card>
+          <div className="imageDiv">
+            <img src={`../images/${photo.file_name}`} style={{
+              width: '50%',
+            }} />
+          </div>
         )}
       </div>
 
