@@ -21,7 +21,7 @@ services:
     container_name: ${node_name}
     build:
       context: ${project_path}
-      dockerfile: ${repository_path}/Dockerfile
+      dockerfile: ${project_path}/Dockerfile
     user: ${node_user}
     restart: ${restart}
     ports:
@@ -39,7 +39,7 @@ services:
     container_name: ${node_builder_name}
     build:
       context: ${project_path}
-      dockerfile: ${repository_path}/Dockerfile
+      dockerfile: ${project_path}/Dockerfile
     user: "node"
     restart: ${restart}
     working_dir: /home/node/app
