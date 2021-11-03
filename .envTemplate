@@ -11,7 +11,7 @@ restart=on-failure # Restart policy
 mongo_name=mern-mongo # The name of the mongodb container
 mongo_path=./mongodb # Path to mongodb data folder
 mongo_root_username=root # Root username for mongodb
-mongo_root_password=12345 # Root password for mongodb
+mongo_root_password=password # Root password for mongodb
 
 node_name=mern-node # The name of the main node server container
 node_host=127.0.0.1 # The host for opening node port (host machine)
