@@ -3,3 +3,4 @@ compiled/
 mongodb/
 
 npm-debug.log
+.env
