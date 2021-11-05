@@ -1,12 +1,8 @@
 import React from 'react';
 import {
-  Typography,
   List,
   ListItem,
   ListItemText,
-  ListItemAvatar,
-  Avatar,
-  ImageIcon
 } from '@material-ui/core';
 import './userDetail.css';
 import { Link } from 'react-router-dom'
