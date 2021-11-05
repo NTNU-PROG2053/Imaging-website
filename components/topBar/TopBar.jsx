@@ -11,8 +11,6 @@ class TopBar extends React.Component {
   constructor(props) {
     super(props);
 
-<<<<<<< HEAD
-=======
     this.state = {
       user: "",
       display: "",
@@ -35,7 +33,6 @@ class TopBar extends React.Component {
     } else if (this.state.currentPage.startsWith("/photos")) {
       this.setState({ display: "Photos of " + this.state.user.first_name + " " + this.state.user.last_name })
     }
->>>>>>> added code for displaying state in topbar
   }
 
   render() {
