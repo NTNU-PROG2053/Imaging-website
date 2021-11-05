@@ -35,7 +35,7 @@ class PhotoShare extends React.Component {
         </Grid>
         <Grid item sm={9}>
           <Paper className="cs142-main-grid-item">
-            <Switch>
+          <Switch>
             <Route exact path="/"
                 render={() =>
                   <Typography variant="body1">
@@ -48,11 +48,22 @@ class PhotoShare extends React.Component {
                   </Typography>}
               />
               <Route path="/users/:userId"
-                render={ props => <UserDetail {...props} /> }
+                render={ props => 
+                <div>
+                  <UserDetail {...props} /> 
+                  <TopBar {...props} />
+              </div> 
+              }
               />
+      
               <Route path="/photos/:userId"
-                render ={ props => <UserPhotos {...props} /> }
-              />
+                render ={ props => 
+                <div>
+                <UserPhotos {...props} /> 
+                <TopBar {...props} />
+                </div> 
+                }
+                /> 
               <Route path="/users" component={UserList}  />
             </Switch>
           </Paper>
