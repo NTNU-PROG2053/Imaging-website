@@ -16,7 +16,7 @@ class Comment extends React.Component {
     render() {
         return(
             <Card className="userComment">
-            <Typography button component={Link} >{this.props.userName}</Typography>
+            <Typography button component={Link} to={`/users/${this.props.user._id}`}>{this.props.user.first_name + " " + this.props.user.last_name}</Typography>
             <Typography>{this.props.text}</Typography>
             <Typography>{this.props.date}</Typography>
             </Card>
