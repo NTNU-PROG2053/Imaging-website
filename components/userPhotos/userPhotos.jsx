@@ -1,10 +1,11 @@
 import React from 'react';
 import {
-  List,
-  ListItem,
-  ListItemText,
-  Typography
+  Card,
+  CardMedia,
+  Typography,
+  CardHeader
 } from '@material-ui/core';
+import Comment from '../comment/Comment';
 import './userPhotos.css';
 
 
@@ -20,34 +21,21 @@ class UserPhotos extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="userPhotosContainer">
         {window.cs142models.photoOfUserModel(this.props.match.params.userId).map((photo) =>
-          <div key={photo.userId} className="imageDiv">
-            <img src={`../images/${photo.file_name}`} style={{
-              width: '50%',
-            }} />
-            <List className="flexContainer">
-              <ListItem>
-                <ListItemText primary={"Date: " + photo.date_time} />
-              </ListItem>
-            </List>
-          
-            <List>
-              {photo.comments.map((comment) =>
-                <div key={comments._id} className="commentDiv">
-                  <ListItem>
-                    <ListItemText primary={comment.comments} />
-                  </ListItem>
-                </div>
-
-              )};
-            </List>
-            
-
-          </div>
+          <Card key={photo._id} className="imageDiv">
+            <CardHeader title={photo.file_name} subheader={photo.date_time}></CardHeader>
+            <CardMedia component="img" image={`../images/${photo.file_name}`} alt={"Could not display image"} />
+            {
+              photo.comments ? (
+                photo.comments.map(comment => (
+                  <Comment key={comment._id} text={comment.comment} userName={comment.user.first_name + " " + comment.user.last_name} date={comment.date_time}/>
+                )
+                )) : <Typography>No comments yet.</Typography>
+            }
+          </Card>
         )}
       </div>
-
     );
   }
 }

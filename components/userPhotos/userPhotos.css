@@ -2,8 +2,6 @@
     margin: 10px;
 }
 
-.flexContainer  {
-    display: 'flex';
-    flexDirection: 'row';
-    padding: 0;
-  };
+.userPhotosContainer {
+    padding: 0 20%;
+}
