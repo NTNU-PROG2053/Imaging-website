@@ -27,7 +27,8 @@ class UserList extends React.Component {
 
   componentDidMount() {
     fetchModel("http://localhost:3000/user/list")
-      .then(data => this.setState({userList: data.data}));
+      .then(data => this.setState({userList: data.data}))
+      .catch(err => console.err(err));
   }
 
   render() {
