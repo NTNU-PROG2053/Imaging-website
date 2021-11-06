@@ -6,6 +6,7 @@ import {
 } from '@material-ui/core';
 import './userDetail.css';
 import { Link } from 'react-router-dom'
+import fetchModel from '../../lib/fetchModelData';
 
 /**
  * Define UserDetail, a React componment of CS142 project #5
@@ -14,29 +15,47 @@ class UserDetail extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      userModel: {},
+    };
+
+  }
+
+  componentDidMount() {
+    fetchModel("http://localhost:3000/user/" + this.props.match.params.userId)
+      .then(data => {this.setState({userModel: data.data})})
+      .catch(err => console.err(err));
+  }
+
+  componentDidUpdate(previousProps) {
+    if (previousProps.match.params.userId !== this.props.match.params.userId) {
+      fetchModel("http://localhost:3000/user/" + this.props.match.params.userId)
+        .then(data => {this.setState({userModel: data.data})})
+        .catch(err => console.err(err));
+    }
+
   }
 
 
   render() {
     return (
-
       <div id="User_details">
         <div>
           <List>
             <ListItem>
-              <ListItemText primary="First Name" secondary={window.cs142models.userModel(this.props.match.params.userId).first_name}></ListItemText>
+              <ListItemText primary="First Name" secondary={this.state.userModel.first_name}></ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText primary="Last Name" secondary={window.cs142models.userModel(this.props.match.params.userId).last_name}></ListItemText>
+              <ListItemText primary="Last Name" secondary={this.state.userModel.last_name}></ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText primary="Location" secondary={window.cs142models.userModel(this.props.match.params.userId).location}></ListItemText>
+              <ListItemText primary="Location" secondary={this.state.userModel.location}></ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText primary="Description" secondary={window.cs142models.userModel(this.props.match.params.userId).description}></ListItemText>
+              <ListItemText primary="Description" secondary={this.state.userModel.description}></ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemText primary="Occupation" secondary={window.cs142models.userModel(this.props.match.params.userId).occupation}></ListItemText>
+              <ListItemText primary="Occupation" secondary={this.state.userModel.occupation}></ListItemText>
             </ListItem>
             <ListItem button component={Link} to={`/photos/${this.props.match.params.userId}`}>
               <ListItemText primary="User Photos" />

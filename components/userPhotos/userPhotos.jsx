@@ -30,7 +30,7 @@ class UserPhotos extends React.Component {
             {
               photo.comments ? (
                 photo.comments.map(comment => (
-                  <Comment  key={comment._id} text={comment.comment} user={comment.user} date={comment.date_time}/>
+                  <Comment key={comment._id} text={comment.comment} user={comment.user} date={comment.date_time}/>
                 )
                 )) : <Typography>No comments yet.</Typography>
             }
