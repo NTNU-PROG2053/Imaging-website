@@ -31,7 +31,6 @@ class UserList extends React.Component {
   }
 
   render() {
-    console.log(this.state.userList);
     return (
       <div>
         <List component="nav">
