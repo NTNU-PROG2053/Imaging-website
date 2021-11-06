@@ -6,6 +6,7 @@ import {
   CardHeader,
 } from '@material-ui/core';
 import Comment from '../comment/Comment';
+import fetchModel from '../../lib/fetchModelData';
 import './userPhotos.css';
 
 
@@ -16,13 +17,23 @@ class UserPhotos extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      photoOfUserModel: [],
+    }
 
   }
+
+  componentDidMount() {
+    fetchModel("http://localhost:3000/photosOfUser/" + this.props.match.params.userId)
+      .then(data => {this.setState({photoOfUserModel: data.data})})
+      .catch(err => console.err(err));
+  }
+
 
   render() {
     return (
       <div className="userPhotosContainer">
-        {window.cs142models.photoOfUserModel(this.props.match.params.userId).map((photo) =>
+        {this.state.photoOfUserModel.map((photo) =>
           <Card key={photo._id} className="imageDiv">
             <CardHeader title={photo.file_name} subheader={photo.date_time}></CardHeader>
             <CardMedia component="img" image={`../images/${photo.file_name}`} alt={"Could not display image"} />
