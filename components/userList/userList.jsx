@@ -10,6 +10,7 @@ import {
   Link
 } from 'react-router-dom';
 import './userList.css';
+import fetchModel from '../../lib/fetchModelData'
 
 /**
  * Define UserList, a React componment of CS142 project #5
@@ -19,12 +20,18 @@ class UserList extends React.Component {
     super(props);
 
     this.state = {
-      userList: window.cs142models.userListModel()
+      userList: [],
     };
 
   }
 
+  componentDidMount() {
+    fetchModel("http://localhost:3000/user/list")
+      .then(data => this.setState({userList: data.data}));
+  }
+
   render() {
+    console.log(this.state.userList);
     return (
       <div>
         <List component="nav">
