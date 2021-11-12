@@ -3,6 +3,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Button
 } from '@material-ui/core';
 import './userDetail.css';
 import { Link } from 'react-router-dom'
@@ -36,17 +37,13 @@ class UserDetail extends React.Component {
 
   }
 
-
   render() {
     return (
       <div id="User_details">
         <div>
           <List>
             <ListItem>
-              <ListItemText primary="First Name" secondary={this.state.userModel.first_name}></ListItemText>
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="Last Name" secondary={this.state.userModel.last_name}></ListItemText>
+              <ListItemText disableTypography primary={this.state.userModel.first_name + " " + this.state.userModel.last_name } ></ListItemText>
             </ListItem>
             <ListItem>
               <ListItemText primary="Location" secondary={this.state.userModel.location}></ListItemText>
@@ -57,9 +54,7 @@ class UserDetail extends React.Component {
             <ListItem>
               <ListItemText primary="Occupation" secondary={this.state.userModel.occupation}></ListItemText>
             </ListItem>
-            <ListItem button component={Link} to={`/photos/${this.props.match.params.userId}`}>
-              <ListItemText primary="User Photos" />
-            </ListItem>
+            <Button variant="contained" component={Link} to={`/photos/${this.props.match.params.userId}`} >User Photos</Button>
           </List>
         </div>
 
