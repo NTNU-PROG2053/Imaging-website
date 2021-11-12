@@ -54,9 +54,7 @@ class UserDetail extends React.Component {
             <ListItem>
               <ListItemText primary="Occupation" secondary={this.state.userModel.occupation}></ListItemText>
             </ListItem>
-            <ListItem button component={Link} to={`/photos/${this.props.match.params.userId}`}>
-              <ListItemText primary="User Photos" />
-            </ListItem>
+            <Button variant="contained" component={Link} to={`/photos/${this.props.match.params.userId}`} >User Photos</Button>
           </List>
         </div>
 
