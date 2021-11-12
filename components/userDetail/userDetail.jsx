@@ -3,7 +3,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  Button
 } from '@material-ui/core';
 import './userDetail.css';
 import { Link } from 'react-router-dom'
@@ -37,6 +36,7 @@ class UserDetail extends React.Component {
 
   }
 
+
   render() {
     return (
       <div id="User_details">
@@ -54,7 +54,9 @@ class UserDetail extends React.Component {
             <ListItem>
               <ListItemText primary="Occupation" secondary={this.state.userModel.occupation}></ListItemText>
             </ListItem>
-            <Button variant="contained" component={Link} to={`/photos/${this.props.match.params.userId}`} >User Photos</Button>
+            <ListItem button component={Link} to={`/photos/${this.props.match.params.userId}`}>
+              <ListItemText primary="User Photos" />
+            </ListItem>
           </List>
         </div>
 
