@@ -45,7 +45,7 @@ class TopBar extends React.Component {
                     </Typography>
                 </Box>
                 <Typography variant="h5" color="inherit">
-                    {this.state.user}
+                    {this.state.display}
                 </Typography>
             </Toolbar>
         </AppBar>
