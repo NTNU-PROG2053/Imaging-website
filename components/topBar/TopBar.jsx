@@ -41,7 +41,7 @@ class TopBar extends React.Component {
             <Toolbar>
                 <Box display='flex' flexGrow={1}>
                     <Typography variant="h5" color="inherit">
-                        Your Name
+                        Your Name jfkldsjalkf
                     </Typography>
                 </Box>
                 <Typography variant="h5" color="inherit">
