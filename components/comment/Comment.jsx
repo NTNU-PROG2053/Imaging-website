@@ -7,16 +7,27 @@ import {
   Link
 } from 'react-router-dom';
 import './Comment.css'
+import fetchModel from '../../lib/fetchModelData';
 
 class Comment extends React.Component {
     constructor(props){
         super(props)
+
+        this.state = {
+            userModel: {}
+        }
     }
+
+  componentDidMount() {
+    fetchModel("http://localhost:3000/user/" + this.props.user_id)
+      .then(data => {this.setState({userModel: data.data})})
+      .catch(err => console.err(err));
+  }
 
     render() {
         return(
             <Card className="userComment">
-            <Typography component={Link} to={`/users/${this.props.user._id}`}>{this.props.user.first_name + " " + this.props.user.last_name}</Typography>
+            <Typography component={Link} to={`/users/${this.state.userModel._id}`}>{this.state.userModel.first_name + " " + this.state.userModel.last_name}</Typography>
             <Typography>{this.props.text}</Typography>
             <Typography>{this.props.date}</Typography>
             </Card>

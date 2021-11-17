@@ -99,9 +99,9 @@ app.get('/test/:p1', function (request, response) {
         // do the work.  We put the collections into array and use async.each to
         // do each .count() query.
         var collections = [
-            {name: 'user', collection: User},
-            {name: 'photo', collection: Photo},
-            {name: 'schemaInfo', collection: SchemaInfo}
+            { name: 'user', collection: User },
+            { name: 'photo', collection: Photo },
+            { name: 'schemaInfo', collection: SchemaInfo }
         ];
         async.each(collections, function (col, done_callback) {
             col.collection.countDocuments({}, function (err, count) {
@@ -130,7 +130,7 @@ app.get('/test/:p1', function (request, response) {
  * URL /user/list - Return all the User object.
  */
 app.get('/user/list', function (request, response) {
-    User.find({},).then(users => { 
+    User.find({}, 'first_name last_name', (err, users) => {
         response.status(200).send(users);
     })
 });
@@ -140,14 +140,13 @@ app.get('/user/list', function (request, response) {
  */
 app.get('/user/:id', function (request, response) {
     var id = request.params.id;
-    var user = cs142models.userModel(id);
-    
-    if (user === null) {
-        console.log('User with _id:' + id + ' not found.');
-        response.status(400).send('Not found');
-        return;
-    }
-    response.status(200).send(user);
+    User.findOne({ _id: id }, (err, user) => {
+        if(err) {
+            response.status(400).send("Not a valid id");
+            return;
+        }
+        response.status(200).send(user)
+    })
 });
 
 /*
@@ -155,13 +154,14 @@ app.get('/user/:id', function (request, response) {
  */
 app.get('/photosOfUser/:id', function (request, response) {
     var id = request.params.id;
-    var photos = cs142models.photoOfUserModel(id);
-    if (photos.length === 0) {
-        console.log('Photos for user with _id:' + id + ' not found.');
-        response.status(400).send('Not found');
-        return;
-    }
-    response.status(200).send(photos);
+
+    Photo.find({user_id:id}, (err, photo) => {
+        if(err) {
+            response.status(400).send("Not a valid id");
+            return;
+        }
+        response.status(200).send(photo)
+    })
 });
 
 
