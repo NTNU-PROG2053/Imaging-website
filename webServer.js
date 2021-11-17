@@ -45,7 +45,7 @@ var express = require('express');
 var app = express();
 
 // XXX - Your submission should work without this line. Comment out or delete this line for tests and before submission!
-var cs142models = require('./modelData/photoApp.js').cs142models;
+/* var cs142models = require('./modelData/photoApp.js').cs142models; */
 
 mongoose.connect('mongodb://root:password@mongo:27017', { useNewUrlParser: true, useUnifiedTopology: true });
 
