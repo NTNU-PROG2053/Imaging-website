@@ -130,7 +130,9 @@ app.get('/test/:p1', function (request, response) {
  * URL /user/list - Return all the User object.
  */
 app.get('/user/list', function (request, response) {
-    response.status(200).send(cs142models.userListModel());
+    User.find({},).then(users => { 
+        response.status(200).send(users);
+    })
 });
 
 /*
