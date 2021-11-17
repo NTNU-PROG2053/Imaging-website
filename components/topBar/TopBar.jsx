@@ -20,13 +20,17 @@ class TopBar extends React.Component {
   }
 
   componentDidMount() {
-    fetchModel("http://localhost:3000/user/" + this.props.match.params.userId)
-      .then(data => {
-          this.setState({userModel: data.data})
-          this.setState({currentPage: this.props.match.path});
+    if (this.props.match != undefined) {
+      fetchModel("http://localhost:3000/user/" + this.props.match.params.userId)
+        .then(data => {
+          this.setState({ userModel: data.data })
+          this.setState({ currentPage: this.props.match.path });
           this.updateDisplay();
-      })
-      .catch(err => console.err(err));
+        })
+        .catch(err => console.err(err));
+    } else {
+      this.setState({display: "Startpage"})
+    }
   }
 
 
@@ -34,8 +38,8 @@ class TopBar extends React.Component {
     if (previousProps !== this.props) {
       fetchModel("http://localhost:3000/user/" + this.props.match.params.userId)
         .then(data => {
-          this.setState({userModel: data.data})
-          this.setState({currentPage: this.props.match.path});
+          this.setState({ userModel: data.data })
+          this.setState({ currentPage: this.props.match.path });
           this.updateDisplay();
         })
         .catch(err => console.err(err));
@@ -52,20 +56,20 @@ class TopBar extends React.Component {
 
   render() {
     return (
-        <AppBar className="cs142-topbar-appBar" position="absolute">
-            <Toolbar>
-                <Box display='flex' flexGrow={1}>
-                    <Typography variant="h5" color="inherit">
-                        Group 13
-                    </Typography>
-                </Box>
-                <Typography variant="h5" color="inherit">
-                    {this.state.display}
-                </Typography>
-            </Toolbar>
-        </AppBar>
+      <AppBar className="cs142-topbar-appBar" position="absolute">
+        <Toolbar>
+          <Box display='flex' flexGrow={1}>
+            <Typography variant="h5" color="inherit">
+              Group 13
+            </Typography>
+          </Box>
+          <Typography variant="h5" color="inherit">
+            {this.state.display}
+          </Typography>
+        </Toolbar>
+      </AppBar>
     );
-}
+  }
 }
 
 export default TopBar;
