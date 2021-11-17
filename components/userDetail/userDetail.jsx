@@ -34,7 +34,6 @@ class UserDetail extends React.Component {
         .then(data => {this.setState({userModel: data.data})})
         .catch(err => console.err(err));
     }
-
   }
 
 
