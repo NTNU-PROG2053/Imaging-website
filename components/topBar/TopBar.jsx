@@ -20,7 +20,7 @@ class TopBar extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.match != undefined) {
+    if (this.props.match !== undefined) {
       fetchModel("http://localhost:3000/user/" + this.props.match.params.userId)
         .then(data => {
           this.setState({ userModel: data.data })

@@ -39,7 +39,7 @@ class UserPhotos extends React.Component {
             <CardMedia component="img" image={`../images/${photo.file_name}`} alt={"Could not display image"} />
             <Typography variant="h5">Comments</Typography>
             {
-              photo.comments ? (
+              photo.comments.length !== 0 ? (
                 photo.comments.map(comment => (
                   <Comment key={comment._id} text={comment.comment} user_id={comment.user_id} date={comment.date_time}/>
                 )
