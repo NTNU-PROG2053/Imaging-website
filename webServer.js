@@ -155,12 +155,12 @@ app.get('/user/:id', function (request, response) {
 app.get('/photosOfUser/:id', function (request, response) {
     var id = request.params.id;
 
-    Photo.find({user_id:id}, (err, photo) => {
+    Photo.find({user_id:id}, (err, photos) => {
         if(err) {
             response.status(400).send("Not a valid id");
             return;
         }
-        response.status(200).send(photo)
+        response.status(200).send(photos)
     })
 });
 
